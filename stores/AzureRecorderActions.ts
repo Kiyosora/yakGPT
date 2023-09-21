@@ -76,8 +76,12 @@ export const startRecording = async (router: NextRouter) => {
   const { auto_detect_language_azure, spoken_language_code_azure } =
     get().settingsForm;
 
-  if (!auto_detect_language_azure && spoken_language_code_azure) {
-    speechConfig.speechRecognitionLanguage = spoken_language_code_azure;
+  // if (!auto_detect_language_azure && spoken_language_code_azure) {
+  //   speechConfig.speechRecognitionLanguage = spoken_language_code_azure;
+  // }
+
+  if (get().chatLanguage === "jp") {
+    speechConfig.speechRecognitionLanguage = "ja-JP";
   }
 
   const audioConfig = speechsdk.AudioConfig.fromDefaultMicrophoneInput();

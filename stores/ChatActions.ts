@@ -40,6 +40,9 @@ export const addChat = (router: NextRouter) => {
 export const setActiveChatId = (id: string | undefined) =>
   set(() => ({ activeChatId: id }));
 
+export const setChatLanguage = (lang: "en" | "jp") =>
+  set(() => ({ chatLanguage: lang }));
+
 export const updateMessage = (message: Message) => {
   const chat = getChatById(get().chats, get().activeChatId);
   if (chat === undefined) {

@@ -140,6 +140,7 @@ export const submitMessage = async (message: Message) => {
       if (get().settingsForm.auto_title) {
         findChatTitle();
       }
+      console.log(`msg = ${chat.messages}`)
     },
     (errorRes, errorBody) => {
       let message = errorBody;

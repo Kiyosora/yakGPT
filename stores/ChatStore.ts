@@ -26,6 +26,7 @@ export const excludeFromState = [
   "playerState",
   "playerAudioQueue",
   "playerIdx",
+  "chatLanguage",
 ];
 
 interface SettingsForm {
@@ -89,6 +90,7 @@ export interface ChatState {
   apiKeyAzureRegion: string | undefined;
 
   chats: Chat[];
+  chatLanguage: "en" | "jp";
   activeChatId: string | undefined;
   colorScheme: "light" | "dark";
   currentAbortController: AbortController | undefined;
@@ -130,6 +132,7 @@ export const initialState = {
   apiKeyAzureRegion: process.env.NEXT_PUBLIC_AZURE_REGION || undefined,
 
   chats: [],
+  chatLanguage: "en" as "en" | "jp",
   activeChatId: undefined,
   colorScheme: "light" as "light" | "dark",
   currentAbortController: undefined,

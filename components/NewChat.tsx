@@ -23,7 +23,7 @@ import stephen_hawking from "../public/chars/stephen_hawking.png";
 import therapist from "../public/chars/therapist.png";
 import tolle from "../public/chars/tolle.png";
 import { useRouter } from "next/router";
-import { addChat, setChosenCharacter } from "@/stores/ChatActions";
+import { addChat, setChosenCharacter, setChatLanguage } from "@/stores/ChatActions";
 import { submitMessage } from "@/stores/SubmitMessage";
 
 const scriptBase = ({
@@ -49,6 +49,17 @@ Hello
 };
 
 const characters = {
+  "日本語能力訓練": {
+    shortDescription: "日本語能力を強化したい方はこちら！",
+    avatar: dalai_lama,
+    prompt: `あなたに日本語教師として活躍してほしい。 
+    私が日本語で話しかけると、あなたは文法ミス（特に自動詞、他動詞の活用、「は」、「を」と「が」の助詞の間違えなど）、タイプミス、事実誤認を厳しく指摘してほしい。
+    また、ミスは一つでは限らない、漏れ無くすべてを探し順次に羅列してください。
+    指摘した後に私の話しに対して100字以内の返事をしてもらう。あなたは私の返事に興味を常に持つべき。
+    新しい会話のポイントを見つけ出し、適切なタイミングで新しい話題を提供するのはあなたの役目。
+    それでは、練習を始めましょう。最初にあなたから質問してもらえますか？`,
+    lang: "jp"
+  },
   "Expert in Everything": {
     shortDescription: "Ask me anything!",
     avatar: expert,
@@ -235,6 +246,7 @@ export default function NewChatCarousel() {
               onClick={(e) => {
                 setChosenCharacter(key);
                 addChat(router);
+                setChatLanguage(character.lang);
                 submitMessage({
                   id: uuidv4(),
                   content:

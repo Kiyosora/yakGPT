@@ -31,7 +31,7 @@ const getVars = (): VarsShape => {
     ? {
         apiKey: state.apiKeyAzure,
         apiKeyRegion: state.apiKeyAzureRegion,
-        voiceId: state.settingsForm.voice_id_azure || DEFAULT_AZURE_VOICE,
+      voiceId: state.chatLanguage === "jp" ? "ja-JP-NanamiNeural" : state.settingsForm.voice_id_azure || DEFAULT_AZURE_VOICE,
         voiceStyle: state.settingsForm.spoken_language_style,
         genAudio: genAudioAzure,
       }
